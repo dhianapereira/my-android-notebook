@@ -1,0 +1,37 @@
+package com.example.habits.collections
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.habits.core.HabitsRepository
+
+class HabitListViewModel(private val repository: HabitsRepository): ViewModel() {
+    private val uiState: MutableLiveData<HabitListUiState> by lazy {
+        MutableLiveData<HabitListUiState>(HabitListUiState(list = repository.fetch()))
+    }
+
+    fun state(): LiveData<HabitListUiState> = uiState
+
+    fun addRandomHabit(){
+        repository.addRandomHabit()
+        refresh()
+    }
+
+    private fun refresh() {
+        uiState.value?.let {
+            uiState.value = it.copy(
+                list = repository.fetch()
+            )
+        }
+    }
+
+    data class HabitListUiState(val list: List<HabitItem>)
+
+    @Suppress("UNCHECKED_CAST")
+    class Factory(private val repository: HabitsRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return HabitListViewModel(repository) as T
+        }
+    }
+}

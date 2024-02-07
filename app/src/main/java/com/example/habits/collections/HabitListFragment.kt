@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.example.habits.R
@@ -22,6 +23,10 @@ class HabitListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var adapter: HabitListAdapter
+
+    private val viewModel: HabitListViewModel by activityViewModels {
+        HabitListViewModel.Factory(MockHabits)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +49,9 @@ class HabitListFragment : Fragment() {
 
         addingDividerDecoration()
 
-        adapter.updateHabits(MockHabits.habitItemList)
+        viewModel.state().observe(viewLifecycleOwner){
+            adapter.updateHabits(it.list)
+        }
     }
 
     private fun addingDividerDecoration() {
