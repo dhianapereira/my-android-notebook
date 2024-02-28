@@ -13,14 +13,15 @@ import com.example.habits.databinding.HabitItemBinding
  * The UI is based on the [HabitItemBinding].
  * We use the [HabitItem] as a model for the binding.
  */
-class HabitListAdapter : RecyclerView.Adapter<HabitListAdapter.ViewHolder>() {
+class HabitListAdapter(private val viewModel: HabitListViewModel) :
+    RecyclerView.Adapter<HabitListAdapter.ViewHolder>() {
 
     private val asyncListDiffer: AsyncListDiffer<HabitItem> = AsyncListDiffer(this, DiffCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = HabitItemBinding.inflate(layoutInflater, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(binding, viewModel)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -38,12 +39,17 @@ class HabitListAdapter : RecyclerView.Adapter<HabitListAdapter.ViewHolder>() {
         asyncListDiffer.submitList(habits)
     }
 
-    class ViewHolder(private val binding: HabitItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
+    class ViewHolder(
+        private val binding: HabitItemBinding,
+        private val viewModel: HabitListViewModel,
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(habit: HabitItem) {
             binding.titleTextView.text = habit.title
             binding.descriptionTextView.text = habit.description
             binding.completeCheckBox.isChecked = habit.isCompleted
+            binding.completeCheckBox.setOnClickListener {
+                viewModel.toggleCompleted(habit.id)
+            }
         }
     }
 

@@ -6,15 +6,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.habits.core.HabitsRepository
 
-class HabitListViewModel(private val repository: HabitsRepository): ViewModel() {
+class HabitListViewModel(private val repository: HabitsRepository) : ViewModel() {
     private val uiState: MutableLiveData<HabitListUiState> by lazy {
         MutableLiveData<HabitListUiState>(HabitListUiState(list = repository.fetch()))
     }
 
     fun state(): LiveData<HabitListUiState> = uiState
 
-    fun addRandomHabit(){
+    fun addRandomHabit() {
         repository.addRandomHabit()
+        refresh()
+    }
+
+    fun toggleCompleted(id: String) {
+        repository.toggleCompleted(id)
         refresh()
     }
 

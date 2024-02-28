@@ -30,7 +30,7 @@ class HabitListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = HabitListAdapter()
+        adapter = HabitListAdapter(viewModel)
     }
 
     override fun onCreateView(
