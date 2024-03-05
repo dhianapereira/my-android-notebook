@@ -45,6 +45,7 @@ class HabitListAdapter(private val viewModel: HabitListViewModel) :
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(habit: HabitItem) {
             binding.titleTextView.text = habit.title
+            binding.titleTextView.paint.isStrikeThruText = habit.isCompleted
             binding.descriptionTextView.text = habit.description
             binding.completeCheckBox.isChecked = habit.isCompleted
             binding.completeCheckBox.setOnClickListener {
