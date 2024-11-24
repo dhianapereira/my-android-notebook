@@ -1,10 +1,6 @@
 # Pokedex
 My version of the Pokedex in Kotlin.
 
-[Pokemon List]()
-
-[Error State]()
-
 ## Development Environment
 To avoid issues, it's advisable that your development environment is
 equipped with the following versions:
@@ -20,7 +16,7 @@ equipped with the following versions:
 
 ### **1. Clone repository**
 ```bash
-git clone https://github.com/dhianapereira/pokedex.git
+git clone https://github.com/dhianapereira/my-android-notebook.git
 ```
 
 ### **2. Go to the project folder**

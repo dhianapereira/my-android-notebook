@@ -16,7 +16,7 @@ equipped with the following versions:
 
 ### **1. Clone repository**
 ```bash
-git clone https://github.com/dhianapereira/habits.git
+git clone https://github.com/dhianapereira/my-android-notebook.git
 ```
 
 ### **2. Go to the project folder**
