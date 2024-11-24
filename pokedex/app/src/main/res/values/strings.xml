@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">pokedex</string>
+    <string name="pokemon_image_content_desc">Pokemon Image</string>
+    <string name="error_message">Failed to load pokemon list.</string>
+    <string name="try_again">Try Again</string>
+</resources>
