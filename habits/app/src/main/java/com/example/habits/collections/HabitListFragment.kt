@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.example.habits.R
@@ -51,6 +52,10 @@ class HabitListFragment : Fragment() {
 
         viewModel.state().observe(viewLifecycleOwner){
             adapter.updateHabits(it.list)
+        }
+
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_habitList_to_habitForm)
         }
     }
 

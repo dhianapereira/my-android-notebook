@@ -2,7 +2,17 @@
     <string name="app_name">Hábitos</string>
     <string name="title_activity_main">Meus Hábitos</string>
     <string name="title_habit_list">Lista de Hábitos</string>
+    <string name="title_habit_form">Novo Hábito</string>
 
     <!-- Content Descriptions and Accessibility Text -->
     <string name="accessibility_add">Adicionar Hábito</string>
+    <string name="habit_title_input_hint">Título do hábito</string>
+    <string name="monday">Segunda</string>
+    <string name="tuesday">Terça</string>
+    <string name="wednesday">Quarta</string>
+    <string name="thursday">Quinta</string>
+    <string name="friday">Sexta</string>
+    <string name="saturday">Sábado</string>
+    <string name="sunday">Domingo</string>
+    <string name="save_button">Salvar</string>
 </resources>

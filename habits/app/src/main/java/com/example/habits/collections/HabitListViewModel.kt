@@ -13,8 +13,8 @@ class HabitListViewModel(private val repository: HabitsRepository) : ViewModel()
 
     fun state(): LiveData<HabitListUiState> = uiState
 
-    fun addRandomHabit() {
-        repository.addRandomHabit()
+    fun addHabit(name: String, habitDaysSelected: List<Int>) {
+        repository.addHabit(name, habitDaysSelected)
         refresh()
     }
 

@@ -5,7 +5,7 @@ import com.example.habits.collections.HabitItem
 interface HabitsRepository {
     fun fetch() : List<HabitItem>
 
-    fun addRandomHabit()
+    fun addHabit(name: String, habitDaysSelected: List<Int>)
 
     fun toggleCompleted(id: String)
 }

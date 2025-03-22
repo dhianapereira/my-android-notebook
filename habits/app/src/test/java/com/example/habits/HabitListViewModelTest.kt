@@ -45,19 +45,21 @@ class HabitListViewModelTest {
     }
 
     @Test
-    fun `Should add a new habit when addRandomHabit is called`() {
+    fun `Should add a new habit when addHabit is called`() {
+        val name = "Test Habit"
+        val habitDaysSelected = listOf(1, 2)
         val list = listOf(
             HabitItem(
                 id = "ID",
-                title = "Test Habit",
+                title = name,
                 isCompleted = false
             )
         )
         `when`(repository.fetch()).thenReturn(emptyList())
-        `when`(repository.addRandomHabit()).then {
+        `when`(repository.addHabit(name, habitDaysSelected)).then {
             `when`(repository.fetch()).thenReturn(list)
         }
-        viewModel.addRandomHabit()
+        viewModel.addHabit(name, habitDaysSelected)
         val state = viewModel.state().getOrAwaitValue()
         assert(state.list.isNotEmpty())
     }
